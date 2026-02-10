@@ -1,12 +1,5 @@
 # this is a fast api application
-from fastapi import FastAPI,Depends,HTTPException,Header
-from pydantic import BaseModel
-from models import UpdateUser,UserCreate,UserSignup
-from db import user_collection, auth_collection
-from bson import ObjectId
-from security import hash_password,verify_password
-from auth import create_access_token, verify_token
-from dependency import get_current_user,get_current_admin
+from fastapi import FastAPI
 from routers.auth_routes import auth_router
 from routers.user_routes import user_router
 

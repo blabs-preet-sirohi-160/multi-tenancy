@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from bson import ObjectId
 from db import user_collection
 from models import UserCreate, UpdateUser
-from dependency import get_current_user, get_current_admin
+from dependency import get_current_user, get_current_admin, get_owned_user
 
 user_router = APIRouter(prefix="/users", tags=["Users"])
 
@@ -32,7 +32,7 @@ async def get_users(current_user=Depends(get_current_user)):
 async def update_user(
     user_id: str,
     user: UpdateUser,
-    admin=Depends(get_current_admin)
+    owned_user=Depends(get_owned_user)
 ):
     await user_collection.update_one(
         {"_id": ObjectId(user_id)},
@@ -45,7 +45,7 @@ async def update_user(
 @user_router.delete("/{user_id}")
 async def delete_user(
     user_id: str,
-    admin=Depends(get_current_admin)
+    owned_user=Depends(get_owned_user)
 ):
     await user_collection.delete_one({"_id": ObjectId(user_id)})
     return {"message": "Deleted"}

@@ -4,3 +4,6 @@ motor
 pyjwt
 passlib[bcrypt]
 python-multipart
+pytest
+pytest-asyncio
+python-multipart

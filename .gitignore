@@ -1,0 +1,6 @@
+./
+
+# MongoDB Compass
+.mongodb/
+.mongodb_compass/
+*.mongodb

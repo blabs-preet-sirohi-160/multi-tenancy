@@ -1,7 +1,7 @@
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from auth import verify_token as decode_token
-from db import user_collection, auth_collection
+from db import user_collection
 from bson import ObjectId
 
 
